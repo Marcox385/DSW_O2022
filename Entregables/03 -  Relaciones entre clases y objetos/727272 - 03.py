@@ -84,6 +84,11 @@ class Ingrediente:
     def nombre(self) -> str:
         ''' Propiedad getter del nombre '''
         return self.nombre.capitalize()
+    
+    @nombre.setter
+    def nombre(self, nombre:str) -> None:
+        ''' Propiedad setter del nombre '''
+        self.nombre = nombre
 
 
 class Pizza:
@@ -94,10 +99,21 @@ class Pizza:
         self.ingredientes = ingredientes
     
     def __str__(self) -> str:
-        return f'Pizza {self.nombre}\nContiene'
+        ingredientes = f"{', '.join([str(i) for i in self.ingredientes[:-1]])} y {self.ingredientes[-1]}" if (len(self.ingredientes > 1)) else str(self.ingredientes[0])
+        return f'Pizza "{self.nombre.capitalize()}"\nContiene {ingredientes}'
 
 
 if __name__ == '__main__':
+    queso = Ingrediente("queso")
+    pepperoni = Ingrediente("pepperoni")
+    salsa = Ingrediente("SALSA")
+    pinia = Ingrediente("pInIa")
+    jamon = Ingrediente("jAMON")
+
+    hawaiiana = Pizza("hawaiina", [queso, salsa, pinia, jamon])
+
+    print(hawaiiana)
+
     yo_merengues = Propietario('Marco', 'Cordero')  # Mal nombre de variable
     petra = Pizzeria("Petra Pizzas a la leña",
                      "Av Rafael Sanzio 522", yo_merengues)
