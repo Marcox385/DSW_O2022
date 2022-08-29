@@ -10,4 +10,4 @@ Curso orientado a las buenas prácticas en el diseño del software.
 
 ### Módulos
 
-1. Programación Orientada a Objetos, UML
+1. Programación Orientada a Objetos; UML

@@ -20,7 +20,7 @@ class Cielo:
     def __init__(self, n_estrellas:int) -> None:
         self.estrellas = []     # Se define composición -> asociación
 
-        for i in range(n_estrellas):
+        for _ in range(n_estrellas):
             self.estrellas.append(Estrella())
     
     def mostrar_estrellas(self) -> None:
