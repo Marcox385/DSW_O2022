@@ -9,12 +9,12 @@ class Propietario:
 
     def __init__(self, nombre: str = 'Fulanito', apellido: str = 'de Tal', gender: bool = False, is_male: bool = True) -> None:
         ''' Crea propietari@ de sucursal '''
-        self.nombre = nombre
-        self.apellido = apellido
+        self.nombre:str = nombre
+        self.apellido:str = apellido
 
         # Sin causar polémica, estrictamente visto como ejercicio
-        self.__gender = gender
-        self.is_male = is_male
+        self.is_male:bool = is_male
+        self.__gender:bool = gender
 
     @property
     def gender(self) -> str:
@@ -27,6 +27,7 @@ class Propietario:
         self.__gender = gender
 
     def __str__(self) -> str:
+        ''' Retorna la representación textual de propietari@ '''
         prefix: str = ''
 
         if (not self.gender):
@@ -40,15 +41,15 @@ class Pizzeria:
 
     def __init__(self, nombre: str, direccion: str, propietario: Propietario, pizzas:list[Pizza] = []) -> None:
         ''' Crea una instancia/sucursal con calificación media (máx. 5) '''
-        self.NOMBRE: str = nombre
-        self.DIRECCION: str = direccion
-        self.calificacion: float = 2.5
-        self.__propietario: Propietario = propietario
+        self.NOMBRE:str = nombre
+        self.DIRECCION:str = direccion
+        self.calificacion:float = 2.5
+        self.__propietario:Propietario = propietario
 
         if (type(pizzas) != list or len(pizzas) == 0): # Aunque sea una pizza, debe estar dentro de una lista
-            self.pizzas = []
+            self.pizzas:list[Pizza] = []
         else:
-            self.pizzas = pizzas
+            self.pizzas:list[Pizza] = pizzas
 
     @property
     def nombre(self) -> str:
@@ -91,22 +92,23 @@ class Pizzeria:
 
 
 class Ingrediente:
-    ''' Clase componente '''
+    ''' Clase componente (Pizza <>-> Ingrediente)\n
+    Los ingredientes no están restringidos a un solo tipo de pizza '''
     def __init__(self, nombre:str) -> None:
         ''' Crea un nuevo ingrediente '''
-        self.nombre = nombre
+        self.NOMBRE:str = nombre
     
     def __str__(self):
         ''' Retorna el nombre del ingrediente formateado '''
-        return self.nombre.capitalize()
+        return self.NOMBRE.capitalize()
 
 class Pizza:
     ''' Clase componente (Pizza <-++ Pizzera) y contenedora (Pizza <>-> Ingrediente)\n
     La preparación de las pizzas usualmente depende de la sucursal '''
     def __init__(self, nombre: str, ingredientes: list[Ingrediente]) -> None:
         ''' Crea una nueva pizza (omitir la palabra "pizza" en instancia) '''
-        self.nombre = nombre
-        self.ingredientes = ingredientes
+        self.nombre:str = nombre
+        self.ingredientes:list[Ingrediente] = ingredientes
     
     def __str__(self) -> str:
         ''' Retorna la descripción de la pizza según sus ingredientes '''
