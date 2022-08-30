@@ -2,8 +2,6 @@
 # Nota: método __repr__ para la representación de la clase, usualmente construída para replicar el objeto
 
 from __future__ import annotations
-from typing import List  # Para hints relacionados a arrays
-
 
 class Propietario:
     ''' Clase contenedora (Propietario <>-> Pizzeria)\n
@@ -29,25 +27,28 @@ class Propietario:
         self.__gender = gender
 
     def __str__(self) -> str:
-        prefix: str = ""
+        prefix: str = ''
 
         if (not self.gender):
-            prefix = "Sr. " if self.is_male else "Sra. "
+            prefix = 'Sr. ' if self.is_male else 'Sra. '
 
         return f'{prefix}{self.nombre} {self.apellido}'
 
 
 class Pizzeria:
-    ''' Clase componente (Propietario <-<> Pizzeria) y contenedora (Pizzeria ++-> Pizza)\n
-    La preparación de las pizzas usualmente depende de la sucursal '''
+    ''' Clase componente (Propietario <-<> Pizzeria) y contenedora (Pizzeria ++-> Pizza) '''
 
-    def __init__(self, nombre: str, direccion: str, propietario: Propietario) -> None:
+    def __init__(self, nombre: str, direccion: str, propietario: Propietario, pizzas:list[Pizza] = []) -> None:
         ''' Crea una instancia/sucursal con calificación media (máx. 5) '''
         self.NOMBRE: str = nombre
         self.DIRECCION: str = direccion
         self.calificacion: float = 2.5
         self.__propietario: Propietario = propietario
-        self.pizzas = []
+
+        if (type(pizzas) != list or len(pizzas) == 0): # Aunque sea una pizza, debe estar dentro de una lista
+            self.pizzas = []
+        else:
+            self.pizzas = pizzas
 
     @property
     def nombre(self) -> str:
@@ -69,9 +70,24 @@ class Pizzeria:
         ''' Propiedad setter de propietario '''
         self.__propietario: str = propietario
 
+    def agregar_pizza(self, pizza:Pizza) -> None:
+        ''' Añade una pizza al menú de la sucursal '''
+        self.pizzas.append(pizza)
+
+    def agregar_pizzas(self, pizzas:list[Pizza]) -> None:
+        ''' Añade varias pizzas al menú de la sucursal '''
+        self.pizzas += pizzas
+
     def __str__(self) -> str:
-        ''' Información general de la pizzería '''
-        return f'{self.nombre} ubicada en {self.DIRECCION}, perteneciente a {self.__propietario}'
+        ''' Retorna información general de la pizzería '''
+        info = f'{self.nombre} ubicada en {self.DIRECCION}, perteneciente a {self.__propietario}'
+
+        if (len(self.pizzas) > 0):
+            info += '\n\n------ MENÚ ------\n'
+            for pizza in self.pizzas:
+                info += str(pizza)
+
+        return info
 
 
 class Ingrediente:
@@ -80,41 +96,57 @@ class Ingrediente:
         ''' Crea un nuevo ingrediente '''
         self.nombre = nombre
     
-    @property
-    def nombre(self) -> str:
-        ''' Propiedad getter del nombre '''
+    def __str__(self):
+        ''' Retorna el nombre del ingrediente formateado '''
         return self.nombre.capitalize()
-    
-    @nombre.setter
-    def nombre(self, nombre:str) -> None:
-        ''' Propiedad setter del nombre '''
-        self.nombre = nombre
-
 
 class Pizza:
-    ''' Clase componente (Pizza <-++ Pizzera) y contenedora (Pizza <>-> Ingrediente) '''
-    def __init__(self, nombre: str, ingredientes: List[Ingrediente]) -> None:
+    ''' Clase componente (Pizza <-++ Pizzera) y contenedora (Pizza <>-> Ingrediente)\n
+    La preparación de las pizzas usualmente depende de la sucursal '''
+    def __init__(self, nombre: str, ingredientes: list[Ingrediente]) -> None:
         ''' Crea una nueva pizza (omitir la palabra "pizza" en instancia) '''
         self.nombre = nombre
         self.ingredientes = ingredientes
     
     def __str__(self) -> str:
-        ingredientes = f"{', '.join([str(i) for i in self.ingredientes[:-1]])} y {self.ingredientes[-1]}" if (len(self.ingredientes > 1)) else str(self.ingredientes[0])
-        return f'Pizza "{self.nombre.capitalize()}"\nContiene {ingredientes}'
+        ''' Retorna la descripción de la pizza según sus ingredientes '''
+        if (len(self.ingredientes) > 1):
+            ingredientes = f"{', '.join([str(i) for i in self.ingredientes[:-1]])} y {self.ingredientes[-1]}"
+        else:
+            ingredientes = str(self.ingredientes[0])
+
+        return f'Pizza "{self.nombre.capitalize()}"\n└──Contiene {ingredientes}\n'
+    
+    def __del__(self) -> None:
+        ''' Indica la eliminación de la pizza '''
+        print(f'La receta de la pizza "{self.nombre}" ha sido quemada\nSe extrañará su grasoso sabor\n')
 
 
 if __name__ == '__main__':
-    queso = Ingrediente("queso")
-    pepperoni = Ingrediente("pepperoni")
-    salsa = Ingrediente("SALSA")
-    pinia = Ingrediente("pInIa")
-    jamon = Ingrediente("jAMON")
+    queso = Ingrediente('queso')
+    pepperoni = Ingrediente('PePPeroni')
+    salsa = Ingrediente('SALSA')
+    pinia = Ingrediente('pIña')
+    jamon = Ingrediente('jAMON')
+    chorizo = Ingrediente('chorizo')
+    cebolla = Ingrediente('cebollA')
+    jalap = Ingrediente('jalapeÑos')
 
-    hawaiiana = Pizza("hawaiina", [queso, salsa, pinia, jamon])
+    hawaiiana = Pizza('hawaiana', [queso, salsa, pinia, jamon])
+    pizza_queso = Pizza('queso', [queso])
+    clasica = Pizza('clásica', [queso, salsa, pepperoni])
+    mexicana = Pizza('mexicana', [queso, salsa, chorizo, cebolla, jalap])
 
-    print(hawaiiana)
+    yo = Propietario('Marco', 'Cordero')  # Mal nombre de variable
+    petra = Pizzeria('Petra Pizzas a la leña', 'Av Rafael Sanzio 522', yo)
+    petra.agregar_pizzas([clasica, mexicana])
+    
+    tu = Propietario(gender=True, is_male=False)
+    donimos = Pizzeria('Donimo\'s', 'Av. Guadalupe 1626', tu, [hawaiiana])
+    donimos.agregar_pizza(pizza_queso)
 
-    yo_merengues = Propietario('Marco', 'Cordero')  # Mal nombre de variable
-    petra = Pizzeria("Petra Pizzas a la leña",
-                     "Av Rafael Sanzio 522", yo_merengues)
-    print(f'Información general de sucursal\n└──{petra}')
+    print(petra, donimos, sep='\n\n')
+
+    print("Se eliminará la primera y segunda sucursal")
+    del petra
+    del donimos
