@@ -10,4 +10,5 @@ Curso orientado a las buenas prácticas en el diseño del software.
 
 ### Módulos
 
-1. Programación Orientada a Objetos; UML
+1. Programación Orientada a Objetos: UML, Relaciones
+2. Diseño de Software: Enfoques de desarrollo (predictivos, iterativos, incrementales, _Agile_), Principios
