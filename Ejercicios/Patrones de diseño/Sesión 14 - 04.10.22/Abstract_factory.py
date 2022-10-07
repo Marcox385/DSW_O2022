@@ -190,7 +190,6 @@ class Aldea:
         ''' Crea una nueva civilización '''
         return tipo.value
 
-
 # Funcionamiento
 if __name__ == '__main__':
     # Código que posiblemente se modificaría
