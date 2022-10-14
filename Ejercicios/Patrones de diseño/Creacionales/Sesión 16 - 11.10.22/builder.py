@@ -15,7 +15,7 @@ class Estructura:
         return self.__partes
 
     def agregar_partes(self, parte: str) -> None:
-        ''' Agrega una parte a la lsita de partes del producto '''
+        ''' Agrega una parte a la lista de partes del producto '''
         self.__partes.append(parte)
     
     def __str__(self) -> str:
