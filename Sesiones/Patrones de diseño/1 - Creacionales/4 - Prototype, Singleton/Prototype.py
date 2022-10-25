@@ -1,4 +1,5 @@
 # IS727272 - Prototype
+# Sesión 18 - 18.10.22
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from copy import copy, deepcopy

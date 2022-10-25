@@ -23,5 +23,19 @@ Curso orientado a las buenas prácticas en el diseño del software.
     - Generalización
 4. Patrones de diseño
     * Creacionales
+      - Factory Method
+      - Abstract Factory Method
+      - Builder
+      - Object Pool (no incluído)
+      - Prototype
+      - Singleton
     * Estructurales
+      - Adapter
+      - Bridge
+      - Composite
+      - Decorator
+      - Façade
+      - Flyweight
+      - Private Class Data (no incluído)
+      - Proxy
     * Comportamiento / Comunicación

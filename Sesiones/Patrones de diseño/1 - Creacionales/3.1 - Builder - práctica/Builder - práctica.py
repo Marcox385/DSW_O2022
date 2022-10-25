@@ -1,4 +1,5 @@
 # IS727272 - Builder práctica
+# Sesión 17 - 14.10.22
 
 # Se propone la creación de una pizzería
 # Los productos pueden ser distintas formas de pizza

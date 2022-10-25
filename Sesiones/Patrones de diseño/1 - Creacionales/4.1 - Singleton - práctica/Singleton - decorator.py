@@ -1,4 +1,5 @@
 # IS727272 - Implementación de singleton con decorador
+# Sesión 19 - 21.10.22
 from __future__ import annotations
 from datetime import datetime as time
 

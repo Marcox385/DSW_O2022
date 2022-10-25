@@ -1,4 +1,5 @@
 # IS727272 - Cordero Hernández, Marco Ricardo
+
 class Menu:
     def __init__(self,  productos:'list[Producto]', categoria:str = 'Normal') -> None:
         ''' Retorna una nueva instancia de menú '''  

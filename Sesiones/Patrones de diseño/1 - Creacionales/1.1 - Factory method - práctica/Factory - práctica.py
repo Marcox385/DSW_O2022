@@ -1,4 +1,5 @@
 # IS727272 - Factory Method práctica
+# Sesión 13 - 30.09.22
 
 # Se propone un ejercicio acerca de pruebas unitarias para microprocesadores
 # en donde se deben automatizar las pruebas de estrés, concurrencia, memoria, etc.

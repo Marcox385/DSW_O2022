@@ -1,4 +1,5 @@
 # IS727272 - Abstract Factory Method práctica
+# Sesión 15 - 07.10.22
 
 # Se propone un ejercicio acerca de la creación de muebles
 # con distintos estilos (art deco, contemporáneo, barroco, etc.)

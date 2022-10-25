@@ -1,4 +1,5 @@
 # IS727272 - Abstract Factory Method
+# Sesión 14 - 04.10.22
 from abc import ABC, abstractmethod
 from enum import Enum
 

@@ -1,4 +1,5 @@
 # IS727272 - Builder
+# Sesión 16 - 11.10.22
 from enum import Enum
 
 # [1] Interfaz constructora

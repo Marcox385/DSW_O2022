@@ -1,4 +1,5 @@
 # IS727272 - Singleton
+# Sesión 18 - 18.10.22
 from __future__ import annotations
 
 class Sesion:
