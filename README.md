@@ -6,7 +6,8 @@ Clase de Diseño de Software para el periodo de Otoño 2022
 
 ### Descripción
 
-Curso orientado a las buenas prácticas en el diseño del software.
+Curso orientado a las buenas prácticas en el diseño del software.  
+Para cualquier código incompleto, referir a [repositorio base](https://github.com/memelogit/software_design).
 
 ### Módulos
 
@@ -26,7 +27,7 @@ Curso orientado a las buenas prácticas en el diseño del software.
       - Factory Method
       - Abstract Factory Method
       - Builder
-      - Object Pool (no incluído)
+      - Object Pool (no incluido)
       - Prototype
       - Singleton
     * Estructurales
@@ -36,6 +37,16 @@ Curso orientado a las buenas prácticas en el diseño del software.
       - Decorator
       - Façade
       - Flyweight
-      - Private Class Data (no incluído)
+      - Private Class Data (no incluido)
       - Proxy
     * Comportamiento / Comunicación
+      - Chain of responsability
+      - Command
+      - Iterator
+      - Mediator
+      - Memento
+      - Observer
+      - State
+      - Strategy
+      - Template method
+      - Visitor
