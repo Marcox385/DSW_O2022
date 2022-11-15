@@ -1,3 +1,5 @@
 Notas/
-Entregables/*/*.zip
-Entregables/*/*.docx
+**/*.zip
+**/*.docx
+**/.env
+ProyectoENV/
